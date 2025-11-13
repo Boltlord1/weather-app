@@ -1,21 +1,25 @@
 import './styles.css'
-import weather from './data.json'
 import DataController from './data-controller.js'
+import displayPage from './page.js'
 
-async function getData(city) {
+let current
+let celsius = true
+
+async function newCity() {
+    const city = prompt('Enter a city:')
     const link = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?
         unitGroup=us&include=days%2Ccurrent&key=TP5NVFQL2P2EWLFRWFK7XSBRN&contentType=json`
     const data = await fetch(link)
     const json = await data.json()
-    return json
+    current = new DataController(json)
+    displayPage(current, celsius)
 }
 
-const button = document.querySelector('button')
-button.addEventListener('click', async () => {
-    let city = prompt('Enter a city:', 'London')
-    const data = await getData(city)
-})
+const newBut = document.querySelector('.new')
+newBut.addEventListener('click', newCity)
 
-console.log(weather)
-const faisalabad = new DataController(weather)
-console.log(faisalabad.timezone)
+const celBut = document.querySelector('.toggle')
+celBut.addEventListener('click', () => {
+    celsius = celsius ? false : true
+    displayPage(current, celsius)
+})

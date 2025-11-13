@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    --main-color: hsl(240 100% 95%)
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    background-color: hsl(from var(--main-color) h s calc(l - 80));
+}
+
+button {
+    appearance: none;
+    color: white;
+    background-color: inherit;
+    font-family: inherit;
+    font-size: 1.2rem;
+    border: none;
+    padding: 20px;
+}
+
+button:hover {
+    background-color: hsl(from var(--main-color) h s calc(l - 70));
+}
+
+.main {
+    background-color: var(--main-color);
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.location {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.current {
+    background-color: hsl(from var(--main-color) h s calc(l - 10));
+    padding: 20px;
+    border-radius: 20px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.current > div {
+    padding: 5px 20px;
+    border-right: 1px black solid;
+}
+
+.current > div:nth-child(odd) {
+    font-weight: 500;
+}
+
+.current > div:nth-child(n + 11) {
+    border-right: none;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(4, 400px);
+    gap: 20px;
+}
+
+.day {
+    background-color: hsl(from var(--main-color) h s calc(l - 5));
+    padding: 20px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+}
+
+.day > div:nth-child(even) {
+    text-align: right;
+}
+
+.day > div:nth-child(odd) {
+    text-align: left;
+}
+
+.day > div:first-child {
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-align: center;
+    grid-column-end: span 2;
+}
